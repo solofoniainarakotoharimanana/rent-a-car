@@ -21,15 +21,30 @@
 					<a class="nav-link" href="#">Nous contacter</a>
 				</li>
 			</ul>
+
+
 			<div class="d-flex flex-row gap-3 ">
-				<button type="button" class="btn btn-login">
-					<i class="fa-solid fa-right-to-bracket mr-2"></i>
-					Connexion
-				</button>
-				<button type="button" class="btn btn-login">
-					<i class="fa-solid fa-right-from-bracket mr-2"></i>
-					Déconnexion
-				</button>
+				{% if app.user %}
+					<div class='flex flex-row gap-3'>
+						{% if app.user.urlImage %}
+							<img src={{ asset('public/images/#{app.user.getUrlimage()}') }} alt={{ app.user.firstname}}/>
+						{% else %}
+							<img class="img-avatar" src={{ asset("/images/avatar.jpg") }} alt={{ app.user.firstname}}/>
+							<p class="user-firstname">Bienvenue
+								{{ app.user.firstname }}
+							</p>
+						{% endif %}
+					</div>
+					<a href={{ path('app_logout') }} type="button" class="btn btn-login">
+						<i class="fa-solid fa-right-from-bracket mr-2"></i>
+						Déconnexion
+					</a>
+				{% else %}
+					<a href="{{ path('app_login') }}" type="button" class="btn btn-login">
+						<i class="fa-solid fa-right-to-bracket mr-2"></i>
+						Connexion
+					</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

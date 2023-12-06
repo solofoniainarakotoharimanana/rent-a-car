@@ -13,7 +13,7 @@ html, body{
 .nav_bar { 
     background-color: #ffffff !important;
     box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.2);
-    padding:20px !important;
+    padding:8px !important;
 }
 
 .btn-login {
@@ -22,6 +22,7 @@ html, body{
     background: #151715;
     border: none;
     font-size: 14px;
+    height: 35px !important;
 }
 
 .btn-login:hover {
@@ -46,3 +47,11 @@ html, body{
     color: #130f85;
 }
 
+.img-avatar {
+    width: 40px;
+}
+
+.user-firstname {
+    color: #130f85;
+    font-size: 0.8rem;
+}
