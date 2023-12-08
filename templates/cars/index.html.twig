@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Liste des voiture' %}
+
+{% block body %}
+	<main role="main">
+		<div class="container home form-search">
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						{{ form_row(form.categories, {'attr':{
+									'class': 'form-control select2-category'
+								}})}}
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						{{ form_row(form.brand, {'attr':{
+									'class': 'form-control select2-brand'
+								}})}}
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						{{ form_row(form.maxPrice, {'attr':{
+									'class': 'form-control input-prixmax'
+								}})}}
+					</div>
+				</div>
+				<div class="col-md-3 search-form">
+					<button
+						type="submit" class="btn btn-success btn-block btn-search ml-3">
+						<!--i class="fa-solid fa-magnifying-glass icon-search"></i-->
+						Rechercher
+					</button>
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+	<div class="container mt-4">
+		<h1 class="text-center text-primary font-weigth-bold mb-5">Liste de nos voitures</h1>
+		<div class="row">
+			{% for car in paginations %}
+				<div class="col-md-3 col-lg-4 col-sm-12 car-item ">
+					<img src={{ car.urlImage }} alt="" class="car-img-item img-thumbnail rounded mx-auto"/>
+					<div class="car-item-price text-center mx-auto pt-2 pb-1">
+						<span class="">€
+							{{ car.price}}
+							/ J</span>
+					</div>
+					<div class="car-item-info mb-5">
+						<h5 class="mt-5 p-2 text-center car-item-title">{{ car.carName}}</h5>
+						<div class="d-flex flex-row gap-5 m-4	">
+							<div class="d-flex flex-row gap-3">
+								<span class="text-primary">
+									<i class="fa-solid fa-calendar-days"></i>
+								</span>
+								<span class="text-dark font-weight-bold ">{{ car.yearOfConstruction }}</span>
+							</div>
+							<div class="d-flex flex-row gap-3">
+								<span class="text-primary">
+									<i class="fa-solid fa-gas-pump"></i>
+								</span>
+								<span>Diesel</span>
+							</div>
+						</div>
+						<div class="d-flex flex-row gap-5 m-4">
+							<div class="d-flex flex-row gap-3">
+								<span class="text-primary">
+									<i class="fa-solid fa-users-line"></i>
+								</span>
+								<span>{{car.nbOfPlaces }}</span>
+							</div>
+							<div>
+								<span class="text-primary">
+									<i class="fa-solid fa-gears"></i>
+								</span>
+								<span>{{ car.speed }}</span>
+							</div>
+						</div>
+
+						<div class="d-flex flex-row gap-5 m-4">
+							<div class="d-flex flex-row gap-3">
+								<span class="text-primary">
+									<i class="fa-solid fa-car-side"></i>
+								</span>
+								<span>{{ car.nbCarDoors }}</span>
+							</div>
+							<div class="d-flex flex-row gap-3">
+								<span class="text-primary">
+									<i class="fa-solid fa-list"></i>
+								</span>
+								<span>{{ car.category.name }}</span>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-md-4 offset-md-7 rent-btn">
+								<a href="#" class="btn btn-rent">Louer moi
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+
+			<div class="navigation">
+				{{ knp_pagination_render(paginations) }}
+			</div>
+
+
+		</div>
+	</main>
+{% endblock %}

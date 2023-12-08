@@ -2,6 +2,7 @@
 
 
 @import "home.css";
+@import "cars.css";
 
 html, body{
     font-family: 'Montserrat', sans-serif;
@@ -54,4 +55,89 @@ html, body{
 .user-firstname {
     color: #130f85;
     font-size: 0.8rem;
+}
+
+/**===Cars==***/
+
+.car-item {
+    position: relative;
+}
+
+.car-img-item {
+    border: none !important;
+    
+}
+
+.car-item-price {
+    border: 1px solid #eee;
+    font-size: 1.5rem;
+    color: #c91b8f;
+    font-weight: 600;
+    width: 50%;
+    position: absolute;
+    top: 214px;
+    left: 88px;
+    background: #ededed;
+}
+
+.car-item-price:hover {
+    border:none;
+    animation-duration: 3s;
+    color:  #fff;
+    background: #c91b8f;
+    box-shadow: 2px 1px 10px 1px rgba(182, 44, 129, 0.116);
+}
+
+.car-item-info {
+    border: 1px solid #dddddd;
+    box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.car-item-title {
+    font-weight: 600;
+    color: #ee99b5;
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn-rent {
+    border: none !important;
+    outline: none;
+    color: #ffffff !important;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.rent-btn {
+    background: #f02e6f !important;
+}
+
+.rent-btn:hover {
+    box-shadow: 2px 1px 30px 1px rgba(202, 17, 131, 0.116);
+    background: #c91b8f;
+}
+
+/**====Form search ***/
+.form-search {
+    background: #becebe;
+    padding: 20px;
+}
+
+.btn-search {
+    position: relative;
+}
+
+.icon-search {
+    position: absolute;
+    color: white;
+}
+
+.search-form {
+    /*padding-top: 30px;*/
+}
+
+
+.input-prixmax::placeholder {
+    font-size: 0.9rem !important;
+    padding: 0.200rem 0.75rem !important;
 }

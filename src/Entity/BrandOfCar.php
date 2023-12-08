@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use App\Entity\Traits\Timestampable;
-use App\Repository\CategoryRepository;
+use App\Repository\BrandOfCarRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\Entity(repositoryClass: BrandOfCarRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Category
+class BrandOfCar
 {
 
     use Timestampable;
@@ -23,7 +23,7 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Car::class)]
+    #[ORM\OneToMany(mappedBy: 'brand', targetEntity: Car::class)]
     private Collection $cars;
 
     public function __construct()
@@ -60,7 +60,7 @@ class Category
     {
         if (!$this->cars->contains($car)) {
             $this->cars->add($car);
-            $car->setCategory($this);
+            $car->setBrand($this);
         }
 
         return $this;
@@ -70,8 +70,8 @@ class Category
     {
         if ($this->cars->removeElement($car)) {
             // set the owning side to null (unless already changed)
-            if ($car->getCategory() === $this) {
-                $car->setCategory(null);
+            if ($car->getBrand() === $this) {
+                $car->setBrand(null);
             }
         }
 
